@@ -1,4 +1,3 @@
-// src/CategoryNav.js
 import React from "react"
 
 const CategoryNav = ({ categories, selectedCategory, onCategoryClick }) => {

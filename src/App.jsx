@@ -1,41 +1,17 @@
-import React, { useState } from "react"
-import allCategories from "./fake-data/all-categories"
-import allProducts from "./fake-data/all-products"
-import CategoryNav from "./components/CategoryNav"
-import ProductList from "./components/ProductsList"
+import React from "react"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
+import Home from "./views/Home"
+import ProductDetail from "./views/ProductDetail"
 import "./App.css"
 
 const App = () => {
-  const [selectedCategory, setSelectedCategory] = useState("")
-
-  const handleCategoryClick = (categoryName) => {
-    setSelectedCategory((prevCategory) =>
-      prevCategory === categoryName ? "" : categoryName
-    )
-  }
-
-  const getCategoryName = (productCategory) => {
-    return `FAKE: ${productCategory}`
-  }
-
-  const filteredProducts = selectedCategory
-    ? allProducts.filter(
-        (product) => getCategoryName(product.category) === selectedCategory
-      )
-    : allProducts
-
   return (
-    <div className='app'>
-      <div className='header'>
-        <h1>Products</h1>
-        <CategoryNav
-          categories={allCategories}
-          selectedCategory={selectedCategory}
-          onCategoryClick={handleCategoryClick}
-        />
-      </div>
-      <ProductList products={filteredProducts} />
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/product/:id' element={<ProductDetail />} />
+      </Routes>
+    </Router>
   )
 }
 
