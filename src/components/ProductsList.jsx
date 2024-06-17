@@ -1,27 +1,17 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
+import Product from "./Product"
 
-const ProductList = ({ products }) => {
-  const navigate = useNavigate()
-
-  const handleProductClick = (id) => {
-    navigate(`/product/${id}`)
-  }
-
+const ProductsList = ({ products }) => {
   return (
     <div className='product-list'>
-      {products.map((product) => (
-        <div
-          key={product.id}
-          className='product'
-          onClick={() => handleProductClick(product.id)}
-        >
-          <img src={product.image} alt={product.title} />
-          <h2>{product.title}</h2>
-        </div>
-      ))}
+      {products.map((product) => {
+        if (!product) {
+          console.error("Product is undefined:", product)
+          return null
+        }
+        return <Product key={product.id} product={product} />
+      })}
     </div>
   )
 }
 
-export default ProductList
+export default ProductsList

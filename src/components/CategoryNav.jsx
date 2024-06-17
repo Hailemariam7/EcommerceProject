@@ -1,5 +1,3 @@
-import React from "react"
-
 const CategoryNav = ({ categories, selectedCategory, onCategoryClick }) => {
   return (
     <nav>
