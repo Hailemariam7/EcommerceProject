@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import { useContext } from "react"
+import React, { useContext } from "react"
 import { FavouritesContext } from "../context/FavouritesContext"
 import heartRegular from "../assets/heart-regular.svg"
 import heartSolid from "../assets/heart-solid.svg"

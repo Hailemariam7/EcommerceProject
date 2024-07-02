@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { FavouritesContext } from "../context/FavouritesContext"
 import Product from "../components/Product"
 
@@ -9,11 +9,11 @@ const Favourites = () => {
   useEffect(() => {
     const fetchFavourites = async () => {
       const products = await Promise.all(
-        favourites.map((id) =>
+        favourites.map((id) => {
           fetch(`https://fakestoreapi.com/products/${id}`).then((res) =>
             res.json()
           )
-        )
+        })
       )
       setFavouriteProducts(products)
     }

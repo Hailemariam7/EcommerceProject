@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 
 const useProducts = (selectedCategory) => {
   const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -17,15 +16,13 @@ const useProducts = (selectedCategory) => {
         setProducts(data)
       } catch (error) {
         setError("Failed to fetch products.")
-      } finally {
-        setLoading(false)
       }
     }
 
     fetchProducts()
   }, [selectedCategory])
 
-  return { products, loading, error }
+  return { products, error }
 }
 
 export default useProducts
